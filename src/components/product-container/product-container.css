@@ -1,0 +1,31 @@
+.product-container {
+  display: flex;
+}
+.product-container__product-list {
+  flex: 0.8;
+}
+
+.product-container__filter {
+  flex: 0.2 1;
+  padding-top: 50px;
+  background: #fff;
+}
+
+.filter_tag {
+  display: flex;
+  padding: 20px 0px 0px 60px;
+  align-items: center;
+}
+
+.filter_tag input {
+  cursor: pointer;
+}
+
+.filter_label {
+  margin-left: 20px;
+}
+
+.product-container__filter_title {
+  font-size: 25px;
+  font-weight: bold;
+}

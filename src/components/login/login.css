@@ -1,0 +1,71 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.form__title,
+.form__subtitle,
+.form__label,
+.form__input {
+  display: flex;
+  justify-content: flex-start;
+}
+.form {
+  width: 400px;
+  padding: 40px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.form__title {
+  font-size: 25px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.form__subtitle {
+  padding-bottom: 20px;
+}
+
+.form__label {
+  font-weight: bold;
+  padding: 5px 0px;
+}
+
+.form__input {
+  padding-bottom: 10px;
+}
+.form__input input {
+  width: 100%;
+  border: 0;
+  outline: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  height: 30px;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.form__submit-btn {
+  padding: 15px;
+  border-radius: 38px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  text-shadow: none;
+  box-shadow: 0px 10px 10px rgb(238 48 66 / 20%);
+  background: #ee3042;
+  letter-spacing: 0px;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.form__footer {
+  display: flex;
+  margin-top: 20px;
+}
+
+.forgot-password-link {
+  display: flex;
+  justify-content: flex-end;
+}

@@ -1,0 +1,37 @@
+.order__content {
+  background: #fff;
+  margin: 2%;
+  height: 96%;
+}
+.orders {
+  height: 80%;
+}
+
+.order_id-col,
+.order_duration-col,
+.order_products-col,
+.order_total-amount-col,
+.order_status-col {
+  font-size: 20px;
+  padding: 20px;
+  font-weight: bold;
+}
+.order__content_card {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 15px;
+}
+
+.order_status {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #08cc08;
+}
+.order-description {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}

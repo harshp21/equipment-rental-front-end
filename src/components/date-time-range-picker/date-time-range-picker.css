@@ -1,0 +1,7 @@
+.date-time-range-picker {
+  display: flex;
+}
+
+.date-time-range-picker .rdt {
+  margin-right: 20px;
+}

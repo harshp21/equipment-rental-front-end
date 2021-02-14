@@ -1,10 +1,6 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  height: 100%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -35,4 +31,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.link {
+  color: #2289d3;
 }
