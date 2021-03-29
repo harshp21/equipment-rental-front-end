@@ -1,31 +1,33 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { UserContext } from '../../context/user-context/user-context';
-import { toast } from 'react-toastify';
 import { Redirect, Route } from 'react-router-dom';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
 
+    const [renderRoutes, setRenderRoutes] = useState(false);
     const userContext = useContext(UserContext);
+
     useEffect(() => {
-        const isUserLoggedIn = async () => {
-            await userContext.isUserLoggedIn();
-            if (!userContext.userState.isLoggedIn) {
-                toast.info('You need to login');
-            }
-        }
-        isUserLoggedIn();
+        userContext.isUserLoggedIn()
+            .then(res => setRenderRoutes(true))
+            .catch(err => setRenderRoutes(true));
     }, [])
     return (
-        <Route {...rest} render={
+        <>{renderRoutes && <Route {...rest} render={
 
             (props) => {
                 if (userContext.userState.isLoggedIn) {
                     return <Component {...props} />
                 } else {
-                    return <Redirect to="/sign-in" />
+                    return <Redirect to={{
+                        pathname: "/sign-in",
+                        state: { next: props.location.pathname }
+                    }} />
                 }
             }
-        } />
+        } />}
+
+        </>
     )
 }
 
