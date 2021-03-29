@@ -6,6 +6,8 @@ import { Link, useHistory } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../context/user-context/user-context';
 import { ProductContext } from '../../context/product-context/product-context';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 function Header() {
 
@@ -26,8 +28,22 @@ function Header() {
     }, [userContext.userState.isLoggedIn])
 
     const handleSignOut = () => {
-        userContextRef.current.loginOutUser();
-        productContextRef.current.clearCart();
+        confirmAlert({
+            title: 'Logout',
+            message: 'Are you sure you want to logout?',
+            buttons: [
+                {
+                    label: 'Yes',
+                    onClick: () => {
+                        userContextRef.current.loginOutUser();
+                        productContextRef.current.clearCart();
+                    },
+                },
+                {
+                    label: 'No',
+                }
+            ]
+        })
     }
 
     const handleSignIn = () => {
@@ -37,7 +53,7 @@ function Header() {
     return (
         <div className="header">
             <div className="header__logo">
-                logo
+                Rental Products
             </div>
             <div className="header__nav">
                 <div className="header__nav_nav-items">
