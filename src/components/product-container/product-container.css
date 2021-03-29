@@ -15,10 +15,13 @@
   display: flex;
   padding: 20px 0px 0px 60px;
   align-items: center;
+  font-size: 18px;
 }
 
 .filter_tag input {
   cursor: pointer;
+  height: 18px;
+  width: 18px;
 }
 
 .filter_label {
@@ -28,4 +31,22 @@
 .product-container__filter_title {
   font-size: 25px;
   font-weight: bold;
+}
+
+@media only screen and (max-width: 1350px) {
+  .product-container__filter {
+    flex: 0.25 1;
+  }
+  .product-container__product-list {
+    flex: 0.75;
+  }
+}
+
+@media only screen and (max-width: 1080px) {
+  .product-container__filter {
+    flex: 0.3 1;
+  }
+  .product-container__product-list {
+    flex: 0.7;
+  }
 }
