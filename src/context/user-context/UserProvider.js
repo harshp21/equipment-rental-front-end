@@ -28,7 +28,7 @@ function UserProvider(props) {
     const [state, dispatch] = useReducer(userReducer, initialState);
     const history = useHistory();
 
-    const logInUser = async (emailId, password) => {
+    const logInUser = async ({ emailId, password }, renderPath = '/') => {
         try {
             const result = await axios.post('/user/login', {
                 emailId,
@@ -36,10 +36,10 @@ function UserProvider(props) {
             });
             localStorage.setItem('token', result.data.token);
             toast.success(result.data.message);
-            history.push('/home');
+            history.push(renderPath);
             dispatch({ type: USER_LOGIN_SUCCESS, payload: result.data })
         } catch (err) {
-            toast.error('Failed to login User');
+            toast.error(err.response.data.message);
             dispatch({ type: USER_LOGIN_FAILURE })
         }
     }
@@ -67,7 +67,7 @@ function UserProvider(props) {
             dispatch({ type: USER_SIGNUP_SUCCESS });
 
         } catch (err) {
-            toast.error('Failed to sign up user');
+            toast.error(err.response.data.message);
             dispatch({ type: USER_SIGNUP_FAILURE });
         }
     }
@@ -79,7 +79,7 @@ function UserProvider(props) {
             history.push('/sign-in');
             dispatch({ type: USER_ACCOUNT_ACTIVATION_SUCCESS })
         } catch (err) {
-            toast.error('Failed to activate account');
+            toast.error(err.response.data.message);
             dispatch({ type: USER_ACCOUNT_ACTIVATION_FAILURE })
         }
     }
@@ -91,7 +91,7 @@ function UserProvider(props) {
             });
             toast.success(result.data.message);
         } catch (err) {
-            toast.error('Unable to recover password');
+            toast.error(err.response.data.message);
         }
     }
 
@@ -104,7 +104,7 @@ function UserProvider(props) {
             history.push('/sign-in');
             toast.success(result.data.message);
         } catch (err) {
-            toast.error('Unable to change the password');
+            toast.error(err.response.data.message);
         }
     }
 
