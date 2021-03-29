@@ -17,6 +17,7 @@ import Cart from './components/cart/Cart';
 import ProtectedRoute from './components/protected-route/ProtectedRoute';
 import Orders from './components/orders/orders';
 import OrderProvider from './context/orders-context/OrderProvider';
+import PageNotFound from './components/page-not-found/PageNotFound';
 
 function App() {
 
@@ -49,10 +50,13 @@ function App() {
                 <Route path="/activate-account/:activationCode" component={ActivateAccount} />
                 <ProtectedRoute path="/cart" component={Cart} />
                 <ProtectedRoute path="/orders" exact component={Orders} />
+                <Route path='/404' component={PageNotFound} />
                 <Route exact path="/" >
                   <Redirect to="/home" />
                 </Route>
-                {/* <Route component={ } /> */}
+                <Route path="*">
+                  <Redirect to="/404" />
+                </Route>
               </Switch>
             </OrderProvider>
           </UserProvider>
