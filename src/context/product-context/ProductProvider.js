@@ -22,7 +22,6 @@ import { toast } from 'react-toastify';
 
 function ProductProvider(props) {
 
-
     const initialState = {
         products: [],
         selectedProducts: [],
@@ -40,7 +39,7 @@ function ProductProvider(props) {
             const result = await axios.get('/products');
             dispatch({ type: PRODUCT_FETCH_SUCCESS, payload: result.data });
         } catch (err) {
-            toast.error('Unable to fetch data');
+            toast.error(err.response.data.message);
             dispatch({ type: PRODUCT_FETCH_FAILURE });
         }
     }
@@ -77,7 +76,7 @@ function ProductProvider(props) {
             dispatch({ type: ADD_TO_CART_SUCCESS, payload: result.data.cartDetails })
         } catch (err) {
             dispatch({ type: ADD_TO_CART_FAILURE })
-            toast.error('Unable to add to cart');
+            toast.error(err.response.data.message);
         }
     }
 
@@ -91,7 +90,7 @@ function ProductProvider(props) {
             dispatch({ type: REMOVE_FROM_CART_SUCCESS, payload: result.data.cartDetails })
         } catch (err) {
             dispatch({ type: REMOVE_FROM_CART_FAILURE })
-            toast.error('Unable to remove from cart');
+            toast.error(err.response.data.message);
         }
     }
 
