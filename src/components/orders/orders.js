@@ -24,7 +24,6 @@ function Orders() {
 
                 {orderContext.orderState.orders.length !== 0 ?
                     (orderContext.orderState.orders.map((order) => {
-                        console.log(order);
                         return <div key={order.orderId} className="order__content_card">
                             <div className="order_id">{order.orderId}</div>
                             <div className="order_duration">{order.bookedOn}</div>
